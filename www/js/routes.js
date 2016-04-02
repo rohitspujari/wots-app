@@ -10,7 +10,7 @@ angular.module('app.routes', [])
     
   
 
-      .state('tabs.reviews', {
+    .state('tabs.reviews', {
     url: '/review',
     views: {
       'tab1': {
@@ -92,7 +92,7 @@ angular.module('app.routes', [])
   .state('auth.signup', {
     url: '/signup',
     templateUrl: "templates/auth/signup.html",
-    controller: 'SignupCtrl'
+    controller: 'SignUpCtrl'
   })
 
   .state('auth.forgot-password', {

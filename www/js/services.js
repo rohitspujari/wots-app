@@ -1,4 +1,13 @@
-angular.module('app.services', [])
+angular.module('app.services', ["firebase"])
+
+.factory("Auth", ["$firebaseAuth",
+  function($firebaseAuth) {
+    var ref = new Firebase("https://wots.firebaseio.com");
+    return $firebaseAuth(ref);
+  }
+])
+
+
 
 .factory('BlankFactory', [function(){
 
@@ -7,4 +16,5 @@ angular.module('app.services', [])
 .service('BlankService', [function(){
 
 }]);
+
 

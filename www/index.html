@@ -18,6 +18,16 @@
     <script src="js/routes.js"></script>
     <script src="js/services.js"></script>
     <script src="js/directives.js"></script>
+    <script src="lib/ionic-ratings/dist/ionic-ratings.min.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
+
+    
+    
 
     <!-- Only required for Tab projects w/ pages in multiple tabs 
     <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
@@ -27,25 +37,37 @@
   <body ng-app="app" animation="slide-left-right-ios7">
   <div>
     <ion-side-menus enable-menu-with-back-views="false" data-componentid="side-menu21">
-        <ion-side-menu-content>
-            <ion-nav-bar class="bar-stable">
+        <ion-side-menu-content drag-content="false">
+            <ion-nav-bar class="bar-dark">
                 <ion-nav-back-button></ion-nav-back-button>
                 <ion-nav-buttons side="left">
                     <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
                 </ion-nav-buttons>
             </ion-nav-bar>
             <ion-nav-view></ion-nav-view>
-        </ion-side-menu-content drag-content="false">
+        </ion-side-menu-content>
         <ion-side-menu side="left" id="side-menu21">
-            <ion-header-bar class="bar-stable">
-                <div class="title">Menu</div>
+            <ion-header-bar class="bar-dark">            
+                <div class="title"><i class="icon ion-person">&nbsp;&nbsp;&nbsp;Profile</i> 
+                </div>
             </ion-header-bar>
             <ion-content padding="false" class="side-menu-left has-header">
                 <ion-list data-componentid="list1">
-                    <ion-item ui-sref="profile" menu-close="" data-componentid="list-item1">Profile</ion-item>
-                    <ion-item ui-sref="payment" menu-close="" data-componentid="list-item2">Payment</ion-item>
-                    <ion-item ui-sref="settings" menu-close="" data-componentid="list-item3">Settings</ion-item>
-                    <ion-item ui-sref="logout" menu-close="" data-componentid="list-item4">Logout</ion-item>
+                    <ion-item ui-sref="history" menu-close="" data-componentid="list-item5">
+                    <i class="icon ion-ios-clock-outline">&nbsp;&nbsp;&nbsp;History</i>   
+                    </ion-item>
+                    <ion-item ui-sref="payment" menu-close="" data-componentid="list-item2">
+                    <i class="icon ion-card">&nbsp;&nbsp;&nbsp;Deposit</i>   
+                    </ion-item>
+                    <ion-item ui-sref="settings" menu-close="" data-componentid="list-item3">
+                    <i class="icon ion-ios-gear-outline">&nbsp;&nbsp;&nbsp;Settings</i>   
+                    </ion-item>
+                    <ion-item ui-sref="logout" menu-close="" data-componentid="list-item4">
+                    <i class="icon ion-log-out">&nbsp;&nbsp;&nbsp;Logout</i>   
+                    </ion-item>
+                    <ion-item ui-sref="logout" menu-close="" data-componentid="list-item6">
+                    <i class="icon ion-clipboard">&nbsp;&nbsp;&nbsp;Data</i>   
+                    </ion-item>
                 </ion-list>
             </ion-content>
         </ion-side-menu>

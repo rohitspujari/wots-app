@@ -1,9 +1,11 @@
-<ion-view class="signup-view auth-view" cache-view="false">
+<ion-view class="signup-view auth-view splash branding" cache-view="false">
   <ion-content scroll="false">
+  <div class="login-page app-name"><h3>Word on the Street!</h3></div>
     <div class="row">
       <div class="col col-center">
         <div class="card sign-up-container">
           <form name="signup_form" class="" novalidate>
+
             <div class="item item-body">
               <label class="item item-input">
                 <input type="email" placeholder="Email" name="user_email" ng-model="user.email" required>
@@ -12,18 +14,24 @@
                 <input type="password" placeholder="Password" name="user_password" ng-model="user.password" required show-hide-input>
               </label>
             </div>
-            <div class="item item-body bottom-content">
-              <button type="submit" class="button button-assertive button-block" ng-click="doSignUp()" ng-disabled="signup_form.$invalid">
+            
+
+            <div class="item item-body bottom-content" ng-app="app" ng-controller="SignUpCtrl">
+              <button type="submit" class="button button-outline button-dark button-block" ng-click="doSignUp()" ng-disabled="signup_form.$invalid">
                 Sign Up
               </button>
             </div>
+
+
           </form>
+
         </div>
         <div class="alternative-actions">
-          <a class="log-in button button-small button-clear button-light" ui-sref="auth.login">
-            Log In
-          </a>
+          <a class="log-in button button-small button-clear button-dark" ui-sref="auth.login">
+          Log In
+          </a>          
         </div>
+
       </div>
     </div>
   </ion-content>

@@ -9730,3 +9730,60 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+@font-face {
+  font-family: "storybook";
+  src: url("/fonts/storybook.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal; }
+
+.splash {
+  background: url("../../../img/splash.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover; }
+
+.app-name {
+  margin-top: 100px;
+  text-align: center;
+  margin-top: 0x; }
+  .app-name h3 {
+    color: #444;
+    font-family: "storybook";
+    font-size: 50px; }
+
+.branding {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 0px; }
+
+.login_form {
+  align: "center"; }
+
+.icon-like {
+  color: #b3cd52;
+  font-size: 30px;
+  padding: 0px 70px; }
+
+.icon-unlike {
+  color: dark;
+  font-size: 30px;
+  padding: 0px 70px; }
+
+.larger {
+  font-size: 30px;
+  padding: 0px 70px; }
+
+.review {
+  display: inline-block;
+  padding: 0px 50px; }
+
+.ionic_ratings .icon {
+  font-size: 20px; }
+
+.ionic_ratings .read_only {
+  pointer-events: none; }
+
+body {
+  cursor: url("http://ionicframework.com/img/finger.png"), auto; }
