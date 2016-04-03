@@ -12,6 +12,22 @@ angular.module('app.services', ["firebase"])
   return $firebaseArray(reviewsRef);
 })
 
+.factory("ReviewCards", function($firebaseArray) {
+  var reviewCardsRef = new Firebase("https://wots.firebaseio.com");
+  var artists = $firebaseArray(reviewCardsRef.child('artists'));
+
+
+  return {
+        all: function() {
+            return artists;
+        },
+        get: function(id) {
+            // Simple index lookup
+            return artists[id];
+        }
+    }
+  
+})
 
 
 .factory('BlankFactory', [function(){

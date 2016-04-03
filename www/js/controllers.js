@@ -86,14 +86,17 @@ angular.module('app.controllers', ['ionic-ratings', 'app.services','firebase'])
 
 })
 
-.controller('ratingCtrl',  ['$scope', '$http', '$state', 'Reviews',function($scope, $http, $state,Reviews) {
+.controller('ratingCtrl',  ['$scope', '$http', '$state', 'Reviews', 'ReviewCards',function($scope, $http, $state,Reviews, ReviewCards) {
 
-  $http.get('js/data.json').success(function(data){
+  // $http.get('js/data.json').success(function(data){
 
-    $scope.orderItems = data.artists;
+  //   $scope.orderItems = data.artists;
 
-  });
+  // });
+
+$scope.orderItems = ReviewCards.all();
   
+ 
   $scope.orders = [];
 
   $scope.ratingsObject = {
