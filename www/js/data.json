@@ -1,8 +1,8 @@
 {
-  "calendar": [
+  "restaurant": [
     {
       "weekday": "Monday",
-      "title": "Art in Full Color",
+      "title": "Sabri Nihari",
       "description": "The first day of CAC events and exhibits is kicked off under the theme of Art in Full Color From a demonstration in graffiti art on a wall of the Rousseau Room, to the exhibit of colorful glazed modern glassware in the Dover Hall, Art in Full Color will get CAC started in full swing!",
       "schedule": [
         {
@@ -28,7 +28,7 @@
       ]
     }, {
       "weekday": "Tuesday",
-      "title": "Water in Art",
+      "title": "Pakwaan",
       "description": "Water in Art is the theme for the second day, as art students from around the world gather at the Fountain of Intrigue in the gardens of Hotel Contempo to create ice sculptures, and art lecturers discuss the use of water as an art material, and water as an art subject.",
       "schedule": [
         {
@@ -54,6 +54,7 @@
       ]
     }, {
       "weekday": "Wednesday",
+      "title": "Khan BBQ",
       "schedule": [
         {
           "time": "9:30 to 10:30 am",
@@ -73,6 +74,7 @@
       ]
     }, {
       "weekday": "Thursday",
+      "title": "Tiffin",
       "schedule": [
         {
           "time": "09:30 to 10:30 am",

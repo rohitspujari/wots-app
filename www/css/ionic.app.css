@@ -9773,11 +9773,11 @@ a.button {
 
 .icon-larger {
   font-size: 30px;
-  padding: 0px 70px; }
+  padding: 0px 0px; }
 
 .review {
   display: inline-block;
-  padding: 0px 50px; }
+  float: right; }
 
 .ionic_ratings .icon {
   font-size: 20px; }

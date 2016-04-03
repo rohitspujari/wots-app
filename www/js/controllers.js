@@ -140,24 +140,30 @@ $scope.orderItems = ReviewCards.all();
 
   $scope.rateServer = function(liked_server){
 
+
     $scope.liked_server = !$scope.liked_server;
 
   }
 
   $scope.reviewSlideHasChanged = function(index){
     $scope.orders = [];
+    
     //$scope.message = "Changed"
   }
 
   $scope.rateService = function(liked_service){
 
     $scope.liked_service = !$scope.liked_service;
+    if($scope.liked_service == true)
+      $scope.liked_delivery=false;
 
   }
 
   $scope.rateDelivery = function(liked_delivery){
 
     $scope.liked_delivery = !$scope.liked_delivery;
+    if($scope.liked_delivery == true)
+      $scope.liked_service=false;
 
   }
 

@@ -23,9 +23,8 @@
             <div class="item item-thumbnail-left">
               <img src="img/restaurant.jpg">
               <h2>Khan BBQ</h2>
-              <p>2401 W Devon Ave, Chicago, IL 60659</p>
               <p>November 05, 2015, 10:40 AM</p>
-              <p><span><b>$54.45</b></span> - How was your server Megan Kelly?</p>
+              <p>$54.43, How was Megan?</p>
               <i id="like_server" ng-class="{'icon ion-thumbsup icon-like': liked_server, 'icon ion-thumbsdown icon-unlike': !liked_server}" ng-click=rateServer()></i>
             </div>
 
@@ -51,11 +50,11 @@
           
 
       
-      <div class="item item-body padding"> 
+      <div style="padding:22px 20px;" class="item item-body padding"> 
 
 
-            <i id="like_service" ng-class="{'icon ion-android-restaurant icon-like': liked_service, 'icon ion-android-restaurant icon-unlike': !liked_service}" ng-click="rateService()"></i>
-            <i id="like_delivery" ng-class="{'icon ion-model-s icon-like': liked_delivery, 'icon ion-model-s icon-unlike': !liked_delivery}" ng-click="rateDelivery()"></i>
+            <i style="align:left;" id="like_service" ng-class="{'icon ion-android-restaurant icon-like': liked_service, 'icon ion-android-restaurant icon-unlike': !liked_service}" ng-click="rateService()"></i>
+            <i style="align:right;" id="like_delivery" ng-class="{'icon ion-model-s icon-like': liked_delivery, 'icon ion-model-s icon-unlike': !liked_delivery}" ng-click="rateDelivery()"></i>
      
       </div>
 
@@ -64,25 +63,28 @@
 
         <div class="item item-body">    
 
+        <label class="item item-input item-floating-label">
+    <span class="input-label">Comments</span>
+    <input type="text" placeholder="Comments">
+  </label>
 
-            <label class="item item-input">
+           <!--  <label style="align:center"class="item item-input padding">
+                 <input type="text">
+          </label> -->
+            <!-- <label class="item item-input">
               <textarea placeholder="Tell us about your expereince.. "></textarea>
-            </label>
+            </label> -->
 
             <button class="button button-block button-outline button-dark" ng-click="submitReview()">Submit</button>
 
-            <p>{{message}}</p>
-            <!-- <p>rating: {{userRating}}</p> -->
+            
+            
 
-            <!-- <div ng-repeat="order in orders">
-                I'm a new line. {{order}}
-            </div> -->
-
-
+<!-- 
             <div ng-repeat="(order, rating) in orders">
                 {{order}} : {{rating}}
            </div>
-
+ -->
   
    
         </div>      
