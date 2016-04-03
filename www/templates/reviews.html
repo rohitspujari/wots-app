@@ -15,8 +15,8 @@
 
 <!-- Add Content -->
   <ion-content scroll="false" ng-controller="ratingCtrl" ng-app="app">
-    <ion-slide-box show-pager="true">
-      <ion-slide ng-repeat="i in [1,2,3,4,5]" >
+    <ion-slide-box show-pager="true" on-slide-changed="reviewSlideHasChanged($index)">
+      <ion-slide ng-repeat="i in [1,2,3,4,5]">
         <div class="list card" >
 
 
@@ -71,8 +71,8 @@
 
             <button class="button button-block button-outline button-dark" ng-click="submitReview()">Submit</button>
 
-            <!-- <p>order: {{message}}</p>
-            <p>rating: {{userRating}}</p> -->
+            <p>{{message}}</p>
+            <!-- <p>rating: {{userRating}}</p> -->
 
             <!-- <div ng-repeat="order in orders">
                 I'm a new line. {{order}}
@@ -92,5 +92,6 @@
    
       </ion-slide>
     </ion-slide-box>
+   <!--  <p>{{message}}</p> -->
   </ion-content>   
 </ion-view>

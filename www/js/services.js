@@ -7,6 +7,11 @@ angular.module('app.services', ["firebase"])
   }
 ])
 
+.factory("Reviews", function($firebaseArray) {
+  var reviewsRef = new Firebase("https://wots.firebaseio.com/reviews");
+  return $firebaseArray(reviewsRef);
+})
+
 
 
 .factory('BlankFactory', [function(){

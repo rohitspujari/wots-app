@@ -86,7 +86,7 @@ angular.module('app.controllers', ['ionic-ratings', 'app.services','firebase'])
 
 })
 
-.controller('ratingCtrl',  ['$scope', '$http', '$state',function($scope, $http, $state) {
+.controller('ratingCtrl',  ['$scope', '$http', '$state', 'Reviews',function($scope, $http, $state,Reviews) {
 
   $http.get('js/data.json').success(function(data){
 
@@ -101,8 +101,8 @@ angular.module('app.controllers', ['ionic-ratings', 'app.services','firebase'])
     iconOff: 'ion-ios-star-outline',   //Optional
     iconOnColor: 'rgb(179,205,82)',
     iconOffColor: 'rgb(68,68,68)',
-    rating:  2, //Optional
-    minRating:1,    //Optional
+    rating:  0, //Optional
+    minRating:0,    //Optional
     
     callback: function(rating) {    //Mandatory
       $scope.ratingsCallback(rating);
@@ -141,6 +141,11 @@ angular.module('app.controllers', ['ionic-ratings', 'app.services','firebase'])
 
   }
 
+  $scope.reviewSlideHasChanged = function(index){
+    $scope.orders = [];
+    //$scope.message = "Changed"
+  }
+
   $scope.rateService = function(liked_service){
 
     $scope.liked_service = !$scope.liked_service;
@@ -158,6 +163,10 @@ angular.module('app.controllers', ['ionic-ratings', 'app.services','firebase'])
     // $scope.message = $scope.message + $scope.liked_server + " " + 
     //                  $scope.liked_service + " " + 
     //                  $scope.liked_delivery 
+
+
+    $scope.db = Reviews;
+    $scope.db.$add($scope.orders);
   }
 
 }])
