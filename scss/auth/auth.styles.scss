@@ -1,73 +1,50 @@
-.auth-outer
-{
-	background-color: transparent !important;
-
-	ion-view
-	{
-		background-color: transparent;
-		box-shadow: none !important; // Need to set this with important to prevent awefull vertical line when transitioning
-	}
-
-	ion-header-bar
-	{
-		background-color: transparent;
-
-		*
-		{
-			color: $auth-color;
-		}
-	}
+@font-face {
+  font-family: "storybook";
+  src: url("/fonts/storybook.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal; 
 }
 
-.auth-view
-{
-	.row
-	{
-		height: 100%;
-	}
 
-	.bottom-content
-	{
-		padding-top: 0px;
-		border: none;
 
-		.button
-		{
-			margin: 0px;
-			font-weight: bold;
-		}
-	}
-
-	.alternative-actions
-	{
-		margin: 0px 10px;
-
-		.button
-		{
-			padding: 0px;
-			font-size: 14px;
-		}
-
-		.sign-up
-		{
-			float: right;
-		}
-	}
+.splash{
+	background: url("../../../img/splash.jpeg") 
+	no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
 }
 
-.toggle-view-anchor
-{
-	height: $line-height-computed + $font-size-base;
-	line-height: $line-height-computed + $font-size-base;
-	position: absolute;
-	right: 0px;
-	text-transform: uppercase;
-	font-size: 24px;
-	font-weight: 500;
-	color: $show-hide-password-color;
+.app-name{
+	margin-top:100px;
+	text-align: center;
+	margin-top:0x;
 
-	*
-	{
-		color: $show-hide-password-color;
+	h3{
+
+	color: $dark;
+	font-family: "storybook";
+	font-size: 50px;
+	
+
 	}
+
 }
+
+.branding{
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+
+
+	margin-top:0px;
+}
+
+
+
+
+.login_form{
+    align:"center";
+}
+
+

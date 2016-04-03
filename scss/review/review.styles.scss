@@ -1,0 +1,39 @@
+.icon-like {
+	color: #b3cd52;
+	font-size: 30px;
+    padding: 0px 70px;
+	
+}
+
+.icon-unlike {
+	color: dark;
+	font-size: 30px;
+    padding: 0px 70px;
+	
+}
+
+.icon-larger {
+    font-size: 30px;
+    padding: 0px 70px;
+}
+
+
+.review { 
+	display: inline-block;
+	padding: 0px 50px;	
+
+	}
+
+.ionic_ratings .icon {
+  font-size:20px;
+}
+
+.ionic_ratings .read_only {
+  pointer-events:none;
+}
+
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+

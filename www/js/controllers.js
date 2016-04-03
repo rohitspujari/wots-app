@@ -86,25 +86,79 @@ angular.module('app.controllers', ['ionic-ratings', 'app.services','firebase'])
 
 })
 
-.controller('ratingCtrl', ['$scope', function($scope, $state) {
+.controller('ratingCtrl',  ['$scope', '$http', '$state',function($scope, $http, $state) {
 
-      $scope.ratingsObject = {
-        iconOn : 'ion-ios-star',
-        iconOff : 'ion-ios-star-outline',
-        iconOnColor: 'rgb(179,205,82)',
-        iconOffColor: 'rgb(68,68,68)',
-        //iconOffColor:  'rgb(200, 100, 100)',
-        rating:  1,
-        minRating:1,
-        callback: function(rating) {
-          $scope.ratingsCallback(rating);
-        }
-      };
+  $http.get('js/data.json').success(function(data){
 
+    $scope.orderItems = data.artists;
 
-      $scope.ratingsCallback = function(rating) {
+  });
+  
+  $scope.orders = [];
+
+  $scope.ratingsObject = {
+    iconOn: 'ion-ios-star',    //Optional
+    iconOff: 'ion-ios-star-outline',   //Optional
+    iconOnColor: 'rgb(179,205,82)',
+    iconOffColor: 'rgb(68,68,68)',
+    rating:  2, //Optional
+    minRating:1,    //Optional
+    
+    callback: function(rating) {    //Mandatory
+      $scope.ratingsCallback(rating);
+    }
+  };
+
+    $scope.ratingsCallback = function(rating) {
         console.log('Selected rating is : ', rating);
-      };
+         $scope.userRating= rating;
+
+    };
+
+
+  $scope.itemReview = function(item, id){
+
+    //$scope.orders.push(item+","+$scope.userRating);
+
+      // if($scope.orders.length == 0)
+      // {
+      //   $scope.orders.push({order: item.name, rating: $scope.userRating, key:id, array:$scope.orders.length});
+      // }
+
+    for(var i = 0; i < $scope.orders.length; i++) {
+      if ($scope.orders[i].key === id) {
+          $scope.orders.splice(i, 1);
+          break;
+      }
+    }
+    $scope.orders.push({order: item.name, rating: $scope.userRating, key:id});
+  }
+  
+
+  $scope.rateServer = function(liked_server){
+
+    $scope.liked_server = !$scope.liked_server;
+
+  }
+
+  $scope.rateService = function(liked_service){
+
+    $scope.liked_service = !$scope.liked_service;
+
+  }
+
+  $scope.rateDelivery = function(liked_delivery){
+
+    $scope.liked_delivery = !$scope.liked_delivery;
+
+  }
+
+  $scope.submitReview = function(){
+
+    // $scope.message = $scope.message + $scope.liked_server + " " + 
+    //                  $scope.liked_service + " " + 
+    //                  $scope.liked_delivery 
+  }
 
 }])
 

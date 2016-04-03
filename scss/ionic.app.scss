@@ -19,98 +19,41 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
 
-@font-face {
-  font-family: "storybook";
-  src: url("/fonts/storybook.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal; 
-}
+
+// Include Sass mixins
 
 
 
-.splash{
-	background: url("../../../img/splash.jpeg") 
-	no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-}
-
-.app-name{
-	margin-top:100px;
-	text-align: center;
-	margin-top:0x;
-
-	h3{
-
-	color: $dark;
-	font-family: "storybook";
-	font-size: 50px;
-	
-
-	}
-
-}
-
-.branding{
-	width: 100%;
-	margin: 0 auto;
-	text-align: center;
+// Include Theme variables
 
 
-	margin-top:0px;
-}
+
+// Include Bourbon
+
+
+
+// Include Ionic override styles
+
+
+
+// Include project Sass variables
+@import "scss/review/review.variables";
+@import "scss/auth/auth.variables";
+
+
+// Include custom styles
+@import "scss/auth/auth.styles";
+@import "scss/review/review.styles";
 
 
 
 
-.login_form{
-    align:"center";
-}
 
-
-.icon-like {
-	color: #b3cd52;
-	font-size: 30px;
-    padding: 0px 70px;
-	
-}
-
-.icon-unlike {
-	color: dark;
-	font-size: 30px;
-    padding: 0px 70px;
-	
-}
-
-.larger {
-    font-size: 30px;
-    padding: 0px 70px;
-}
-
-
-.review { 
-
-	display: inline-block;
-	padding: 0px 50px;
-	
-
-	}
-
-.ionic_ratings .icon {
-  font-size:20px;
-}
-
-.ionic_ratings .read_only {
-  pointer-events:none;
-}
-
-body {
-  cursor: url('http://ionicframework.com/img/finger.png'), auto;
-}
 
 

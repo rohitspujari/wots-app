@@ -1,46 +1,49 @@
 <ion-view title="Reviews" id="page2">
 
-  <ion-content overflow-scroll="true" padding="true" class="has-header"></ion-content>
-    <ion-nav-buttons side="right">
+  <!-- <ion-content overflow-scroll="true" padding="true" class="has-header"></ion-content>
+ -->
+
+<!-- Add Refresh Button -->
+  <ion-nav-buttons side="right">
          <button class="button button-icon button-clear ion-ios-refresh-empty" ui-sref="tabs.reviews"></button>
-    </ion-nav-buttons>
+  </ion-nav-buttons>
 
-
- <ion-nav-title>
+<!-- Add Title -->
+  <ion-nav-title>
     <span>Review Cards</span>
   </ion-nav-title>
-  <ion-content scroll="false">
+
+<!-- Add Content -->
+  <ion-content scroll="false" ng-controller="ratingCtrl" ng-app="app">
     <ion-slide-box show-pager="true">
       <ion-slide ng-repeat="i in [1,2,3,4,5]" >
         <div class="list card" >
-          <div class="item item-thumbnail-left">
+
+
+            <div class="item item-thumbnail-left">
               <img src="img/restaurant.jpg">
               <h2>Khan BBQ</h2>
               <p>2401 W Devon Ave, Chicago, IL 60659</p>
               <p>November 05, 2015, 10:40 AM</p>
-               <p><span><b>$54.45</b></span> - How was your server Megan Kelly?</p>
-              <i id="like_server" ng-class="{'icon ion-thumbsup icon-like': liked_server, 'icon ion-thumbsdown icon-unlike': !liked_server}" ng-click="liked_server=!liked_server"></i>
-             
-              
-              
-              
-              
-               
-          </div>
+              <p><span><b>$54.45</b></span> - How was your server Megan Kelly?</p>
+              <i id="like_server" ng-class="{'icon ion-thumbsup icon-like': liked_server, 'icon ion-thumbsdown icon-unlike': !liked_server}" ng-click=rateServer()></i>
+            </div>
 
           
 
-
-          <!-- 
-           -->
           
 
       <ion-scroll direction="y" style="height: 175px">
-        <div style="height: 175px"class="item item-body" ng-controller="ratingCtrl">
+        <div style="height: 175px"class="item item-body">
           <ion-list>
-            <ion-item ng-repeat="item in [1,2,3,4,5]">
-                  Chicken Tikka Masala
-                  <ionic-ratings ratingsobj='ratingsObject' class="review"></ionic-ratings>
+          
+            <!-- <ion-item ng-repeat="item in [1,2,3,4,5]">
+                  Chicken Tikka Masala {{item}}!
+                  <ionic-ratings ratingsobj='ratingsObject' class="review" ng-click="itemReview(item)"></ionic-ratings>
+            </ion-item> -->
+            <ion-item ng-repeat="item in orderItems track by $id(item)">
+                  {{item.name}}
+                  <ionic-ratings ratingsobj='ratingsObject' class="review" ng-click="itemReview(item, $id)"></ionic-ratings>
             </ion-item>
           </ion-list>
         </div>
@@ -51,64 +54,43 @@
       <div class="item item-body padding"> 
 
 
-       <i id="like_service" ng-class="{'icon ion-android-restaurant icon-like': liked_service, 'icon ion-android-restaurant icon-unlike': !liked_service}" ng-click="liked_service=!liked_service"></i>
-        <i id="like_delivery" ng-class="{'icon ion-model-s icon-like': liked_delivery, 'icon ion-model-s icon-unlike': !liked_delivery}" ng-click="liked_delivery=!liked_delivery"></i>
+            <i id="like_service" ng-class="{'icon ion-android-restaurant icon-like': liked_service, 'icon ion-android-restaurant icon-unlike': !liked_service}" ng-click="rateService()"></i>
+            <i id="like_delivery" ng-class="{'icon ion-model-s icon-like': liked_delivery, 'icon ion-model-s icon-unlike': !liked_delivery}" ng-click="rateDelivery()"></i>
      
       </div>
 
     
             
 
-    <div class="item item-body">    
+        <div class="item item-body">    
 
 
-      <label class="item item-input">
-    <textarea placeholder="Tell us about your expereince.. "></textarea>
-  </label>
+            <label class="item item-input">
+              <textarea placeholder="Tell us about your expereince.. "></textarea>
+            </label>
 
-  <button class="button button-block button-outline button-dark" ng-click="goAway()">Submit</button>
+            <button class="button button-block button-outline button-dark" ng-click="submitReview()">Submit</button>
+
+            <!-- <p>order: {{message}}</p>
+            <p>rating: {{userRating}}</p> -->
+
+            <!-- <div ng-repeat="order in orders">
+                I'm a new line. {{order}}
+            </div> -->
+
+
+            <div ng-repeat="(order, rating) in orders">
+                {{order}} : {{rating}}
+           </div>
 
   
    
-  </div>      
+        </div>      
       
           
          
    
-
-   </div>
-
-
-           <!-- </div> -->
-
-          <!-- <label class="item item-input padding"><textarea style="height: 50px;" placeholder="Comments"></textarea></label> -->
-
-
-          <!-- </div> -->
-          <!-- <div class="button-bar">
-
-            <a class="button icon ion-ios-chatboxes-outline" ng-click="showPopup()"></a>
-            <a class="button icon ion-ios-mic-outline"></a>
-            <a class="button icon ion-ios-camera-outline"></a> -->
-
-            
-           <!--  <div class="item"> -->
-            
-
-            
-           <!--   <button class="button left button-clear icon ion-ios-camera-outline"></button>
-             <button class="button left button-clear icon ion-ios-mic-outline"></button> -->
-            
-              
-            <!-- </div> -->
-
-
-        </div>
       </ion-slide>
     </ion-slide-box>
-  </ion-content>
-    
-
-
-   
+  </ion-content>   
 </ion-view>
