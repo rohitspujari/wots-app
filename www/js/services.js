@@ -30,6 +30,9 @@ angular.module('app.services', ["firebase"])
 })
 
 
+
+
+
 .factory('BlankFactory', [function(){
 
 }])
@@ -37,5 +40,8 @@ angular.module('app.services', ["firebase"])
 .service('BlankService', [function(){
 
 }]);
+
+
+
 
 
