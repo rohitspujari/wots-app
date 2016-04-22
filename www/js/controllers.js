@@ -122,7 +122,7 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
             $ionicSlideBoxDelegate.update(); //or just return the function
   }
 
-  $scope.receiptReview = function(item, id){
+  $scope.receiptReview = function(receipt_id, item, id){
 
     //$scope.orders.push(item+","+$scope.userRating);
 
@@ -131,13 +131,15 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
       //   $scope.orders.push({order: item.name, rating: $scope.userRating, key:id, array:$scope.orders.length});
       // }
 
+
+
     for(var i = 0; i < $scope.orders.length; i++) {
-      if ($scope.orders[i].key === id) {
+      if ($scope.orders[i].id == id) {
           $scope.orders.splice(i, 1);
           break;
       }
     }
-    $scope.orders.push({order: item.name, rating: $scope.userRating, key:id});
+    $scope.orders.push({order: item.order, rating: $scope.userRating, id:id});
   }
   
 
@@ -170,15 +172,41 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
 
   }
 
-  $scope.submitReview = function(){
+  $scope.submitReview = function(receipt, comments){
 
     // $scope.message = $scope.message + $scope.liked_server + " " + 
     //                  $scope.liked_service + " " + 
     //                  $scope.liked_delivery 
 
 
-    $scope.db = Reviews;
-    $scope.db.$add($scope.orders);
+
+      receipt.active="0";
+      $scope.receipts.$save(receipt);
+
+    
+      Reviews.$add({ratings:$scope.orders, delivery:$scope.liked_delivery, 
+      service: $scope.liked_service, id: receipt.id, comments: comments})
+
+
+      $ionicSlideBoxDelegate.update();
+
+
+
+    
+    // Reviews.child(receipt.id).set({ratings:$scope.orders, delivery:$scope.liked_delivery, 
+    //   service: $scope.liked_service, id: receipt.id})
+
+   //  $scope.addReview = function() {
+   //        $scope.db.$add({
+   //        text: $scope.receipt_id
+      
+   //        });
+   // };
+    //Reviews.child(receipt_id).set({comments:"Hello How are you?"}).$add($scope.orders);
+    // $scope.db.$add({
+    //   "id":receipt_id,
+    //   "orders":$scope.orders
+    // });
   }
 
 }])

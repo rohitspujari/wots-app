@@ -25,6 +25,7 @@ angular.module('app.services', ["firebase"])
             // Simple index lookup
             return artists[id];
         }
+        
     }
   
 })

@@ -17,15 +17,15 @@
   <ion-content scroll="false" ng-controller="ratingCtrl" ng-app="app">
   <!-- <div><p>{{receipts[1].name}}</p></div> -->
     <ion-slide-box show-pager="true" on-slide-changed="reviewSlideHasChanged(index)" active-slide="currentIndex">
-      <ion-slide ng-repeat="receipt in receipts" ng-init="updateSlider()">
+      <ion-slide ng-repeat="receipt in receipts |filter: { active: '1' }" ng-init="updateSlider()">
         <div class="list card" >
 
 
             <div class="item item-thumbnail-left">
               <img src="img/restaurant.jpg">
               <h2>{{receipt.name}}</h2>
-              <p>{{receipt.time}}</p>
-              <p>$54.43, How was Megan?</p>
+              <p>{{receipt.time * 1000| date:'medium'}}</p>
+              <p>{{"$"+receipt.amount+", How was "+receipt.server + "?"}}</p>
               <i id="like_server" ng-class="{'icon ion-thumbsup icon-like': liked_server, 'icon ion-thumbsdown icon-unlike': !liked_server}" ng-click=rateServer()></i>
             </div>
 
@@ -38,10 +38,10 @@
           <ion-list>
           
             
-            <!-- <ion-item ng-repeat="item in receipt.order_details track by $id(item)">
+            <ion-item ng-repeat="item in receipt.order_details track by $id(item)">
                   {{item.order}}
-                  <ionic-ratings ratingsobj='ratingsObject' class="review" ng-click="receiptReview(receipt, $id)"></ionic-ratings>
-            </ion-item> -->
+                  <ionic-ratings ratingsobj='ratingsObject' class="review" ng-click="receiptReview(receipt.id, item, $id)"></ionic-ratings>
+            </ion-item>
 
           </ion-list>
         </div>
@@ -61,21 +61,13 @@
             
 
         <!-- <div class="item item-body">    --> 
-
-        <label class="item item-input item-floating-label">
+  <form ng-submit="submitReview(receipt, comments)">
+  <label class="item item-input item-floating-label">
     <span class="input-label">Comments</span>
-    <input type="text" placeholder="Comments">
+    <input type="text" placeholder="Comments" name="user_comments" ng-model="comments">
   </label>
-
-           <!--  <label style="align:center"class="item item-input padding">
-                 <input type="text">
-          </label> -->
-            <!-- <label class="item item-input">
-              <textarea placeholder="Tell us about your expereince.. "></textarea>
-            </label> -->
-
-            <button class="button ion-speakerphone button-block button-clear button-assertive" ng-click="submitReview()">&nbsp;&nbsp;&nbsp;Submit</button>
-
+  <button type="submit" class="button ion-speakerphone button-block button-clear button-assertive">&nbsp;&nbsp;&nbsp;Submit</button>
+  </form>
             
             
 
@@ -93,6 +85,6 @@
    
       </ion-slide>
     </ion-slide-box>
-   <!--  <p>{{message}}</p> -->
+    <p>{{receipt.$id}}</p>
   </ion-content>   
 </ion-view>
