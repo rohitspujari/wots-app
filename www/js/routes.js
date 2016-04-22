@@ -35,7 +35,7 @@ angular.module('app.routes', [])
     views: {
       'tab3': {
         templateUrl: 'templates/search.html',
-        controller: 'searchCtrl'
+        controller: 'MapsCtrl'
       }
     }
   })

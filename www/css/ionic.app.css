@@ -9805,3 +9805,10 @@ body {
   /* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
   background-image: none !important;
   height: 0px; }
+
+#map {
+  width: 100%;
+  height: 100%; }
+
+.scroll {
+  height: 100%; }

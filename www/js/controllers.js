@@ -25,6 +25,10 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
 ])
 
 
+
+
+
+
 .controller('LoginCtrl', ['$scope', '$state', 'Auth',
   function($scope, $state, Auth) {       
 
@@ -82,7 +86,7 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
 
 })
 
-.controller('ratingCtrl',  ['$scope', '$http', '$state', 'Reviews', 'ReviewCards',function($scope, $http, $state,Reviews, ReviewCards) {
+.controller('ratingCtrl',  ['$scope', '$http', '$ionicSlideBoxDelegate', '$state', 'Reviews', 'ReviewCards',function($scope, $http,$ionicSlideBoxDelegate, $state,Reviews, ReviewCards) {
 
   // $http.get('js/data.json').success(function(data){
 
@@ -90,11 +94,10 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
 
   // });
 
-$scope.orderItems = ReviewCards.all();
+  $scope.receipts = ReviewCards.all();
   
- 
-  $scope.orders = [];
 
+  $scope.orders = [];
   $scope.ratingsObject = {
     iconOn: 'ion-ios-star',    //Optional
     iconOff: 'ion-ios-star-outline',   //Optional
@@ -108,14 +111,18 @@ $scope.orderItems = ReviewCards.all();
     }
   };
 
-    $scope.ratingsCallback = function(rating) {
+  $scope.ratingsCallback = function(rating) {
         console.log('Selected rating is : ', rating);
          $scope.userRating= rating;
 
-    };
+  };
 
 
-  $scope.itemReview = function(item, id){
+  $scope.updateSlider = function () {
+            $ionicSlideBoxDelegate.update(); //or just return the function
+  }
+
+  $scope.receiptReview = function(item, id){
 
     //$scope.orders.push(item+","+$scope.userRating);
 
@@ -220,7 +227,57 @@ $scope.orderItems = ReviewCards.all();
         $scope.map = map;
     });
  
-}]);
+}])
+
+
+
+.controller('MapsCtrl', function($scope, $ionicLoading) {
+
+  $scope.info_position = {
+    lat: 43.07493,
+    lng: -89.381388
+  };
+
+  $scope.center_position = {
+    lat: 43.07493,
+    lng: -89.381388
+  };
+
+  $scope.my_location = "";
+
+  $scope.$on('mapInitialized', function(event, map) {
+    $scope.map = map;
+  });
+
+  $scope.centerOnMe= function(){
+
+    $scope.positions = [];
+
+    $ionicLoading.show({
+      template: 'Loading...'
+    });
+
+    // with this function you can get the user’s current position
+    // we use this plugin: https://github.com/apache/cordova-plugin-geolocation/
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      $scope.current_position = {lat: pos.G,lng: pos.K};
+      $scope.my_location = pos.G+", "+pos.K;
+      $scope.map.setCenter(pos);
+      $ionicLoading.hide();
+    });
+  };
+});
+
+
+
+
+
+
+
+
+
+
 
 
 

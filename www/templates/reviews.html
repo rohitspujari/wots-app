@@ -15,15 +15,16 @@
 
 <!-- Add Content -->
   <ion-content scroll="false" ng-controller="ratingCtrl" ng-app="app">
-    <ion-slide-box show-pager="true" on-slide-changed="reviewSlideHasChanged($index)">
-      <ion-slide ng-repeat="i in [1,2,3,4,5]">
+  <!-- <div><p>{{receipts[1].name}}</p></div> -->
+    <ion-slide-box show-pager="true" on-slide-changed="reviewSlideHasChanged(index)" active-slide="currentIndex">
+      <ion-slide ng-repeat="receipt in receipts" ng-init="updateSlider()">
         <div class="list card" >
 
 
             <div class="item item-thumbnail-left">
               <img src="img/restaurant.jpg">
-              <h2>Khan BBQ</h2>
-              <p>November 05, 2015, 10:40 AM</p>
+              <h2>{{receipt.name}}</h2>
+              <p>{{receipt.time}}</p>
               <p>$54.43, How was Megan?</p>
               <i id="like_server" ng-class="{'icon ion-thumbsup icon-like': liked_server, 'icon ion-thumbsdown icon-unlike': !liked_server}" ng-click=rateServer()></i>
             </div>
@@ -36,14 +37,12 @@
         <div style="height: 175px"class="item item-body">
           <ion-list>
           
-            <!-- <ion-item ng-repeat="item in [1,2,3,4,5]">
-                  Chicken Tikka Masala {{item}}!
-                  <ionic-ratings ratingsobj='ratingsObject' class="review" ng-click="itemReview(item)"></ionic-ratings>
+            
+            <!-- <ion-item ng-repeat="item in receipt.order_details track by $id(item)">
+                  {{item.order}}
+                  <ionic-ratings ratingsobj='ratingsObject' class="review" ng-click="receiptReview(receipt, $id)"></ionic-ratings>
             </ion-item> -->
-            <ion-item ng-repeat="item in orderItems track by $id(item)">
-                  {{item.name}}
-                  <ionic-ratings ratingsobj='ratingsObject' class="review" ng-click="itemReview(item, $id)"></ionic-ratings>
-            </ion-item>
+
           </ion-list>
         </div>
       </ion-scroll>

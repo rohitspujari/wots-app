@@ -14,7 +14,7 @@ angular.module('app.services', ["firebase"])
 
 .factory("ReviewCards", function($firebaseArray) {
   var reviewCardsRef = new Firebase("https://wots.firebaseio.com");
-  var artists = $firebaseArray(reviewCardsRef.child('artists'));
+  var artists = $firebaseArray(reviewCardsRef.child('receipts'));
 
 
   return {
