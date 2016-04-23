@@ -58,9 +58,9 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
 
 
   
-.controller('reviewsCtrl', function($scope) {
+// .controller('reviewsCtrl', function($scope) {
 
-})
+// })
    
 .controller('cashCtrl', function($scope) {
 
@@ -86,17 +86,15 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
 
 })
 
-.controller('ratingCtrl',  ['$scope', '$http', '$ionicSlideBoxDelegate', '$state', 'Reviews', 'ReviewCards',function($scope, $http,$ionicSlideBoxDelegate, $state,Reviews, ReviewCards) {
+.controller('reviewsCtrl',  ['$scope', '$http' , '$ionicSlideBoxDelegate', '$state', 'Reviews', 'ReviewCards',function($scope, $http ,$ionicSlideBoxDelegate, $state,Reviews, ReviewCards) {
 
   // $http.get('js/data.json').success(function(data){
 
   //   $scope.orderItems = data.artists;
 
   // });
-
-  $scope.receipts = ReviewCards.all();
   
-
+  $scope.receipts = ReviewCards.all();
   $scope.orders = [];
   $scope.ratingsObject = {
     iconOn: 'ion-ios-star',    //Optional
@@ -153,7 +151,7 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
   $scope.reviewSlideHasChanged = function(index){
     $scope.orders = [];
 
-    //$scope.message = "Changed"
+   
   }
 
   $scope.rateService = function(liked_service){
@@ -181,12 +179,13 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
 
 
       receipt.active="0";
+      receipt.sample="Rohit Comments"
       $scope.receipts.$save(receipt);
 
     
       Reviews.$add({ratings:$scope.orders, delivery:$scope.liked_delivery, 
       service: $scope.liked_service, id: receipt.id, comments: comments})
-
+      $scope.orders = [];
 
       $ionicSlideBoxDelegate.update();
 

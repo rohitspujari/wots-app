@@ -3,9 +3,9 @@
         <ion-tab title="Search" icon-on="ion-ios-search-strong" icon-off="ion-ios-search-strong" href="#/tabs/search">
             <ion-nav-view name="tab3"></ion-nav-view>
         </ion-tab>
-        <ion-tab title="Reviews" icon-off="ion-ios-star-outline" icon-on="ion-ios-star" href="#/tabs/review">
+        <ion-tab title="Reviews" icon-off="ion-ios-star-outline" icon-on="ion-ios-star" badge="(receipts |filter: { active: '1' }).length" badge-style="badge-assertive" ng-controller="reviewsCtrl" href="#/tabs/review">
             <ion-nav-view name="tab1"></ion-nav-view>
-        </ion-tab>
+        </ion-tab> 
         <ion-tab title="Cash" icon-off="ion-social-usd-outline" icon-on="ion-cash" href="#/tabs/cash">
             <ion-nav-view name="tab2"></ion-nav-view>
         </ion-tab>

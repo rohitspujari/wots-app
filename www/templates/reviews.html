@@ -14,9 +14,9 @@
   </ion-nav-title>
 
 <!-- Add Content -->
-  <ion-content scroll="false" ng-controller="ratingCtrl" ng-app="app">
+  <ion-content scroll="false" ng-app="app">
   <!-- <div><p>{{receipts[1].name}}</p></div> -->
-    <ion-slide-box show-pager="true" on-slide-changed="reviewSlideHasChanged(index)" active-slide="currentIndex">
+    <ion-slide-box show-pager="true" on-slide-changed="reviewSlideHasChanged($index)" active-slide="currentIndex">
       <ion-slide ng-repeat="receipt in receipts |filter: { active: '1' }" ng-init="updateSlider()">
         <div class="list card" >
 
@@ -85,6 +85,6 @@
    
       </ion-slide>
     </ion-slide-box>
-    <p>{{receipt.$id}}</p>
+    <p>{{reviewCount}}</p>
   </ion-content>   
 </ion-view>
