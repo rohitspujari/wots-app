@@ -61,12 +61,12 @@
             
 
         <!-- <div class="item item-body">    --> 
-  <form ng-submit="submitReview(receipt, comments)">
+  <form name="review_form" ng-submit="submitReview(receipt, comments)">
   <label class="item item-input item-floating-label">
     <span class="input-label">Comments</span>
-    <input type="text" placeholder="Comments" name="user_comments" ng-model="comments">
+    <input type="text" placeholder="Comments" name="user_comments" ng-model="comments" required>
   </label>
-  <button type="submit" class="button ion-speakerphone button-block button-clear button-assertive">&nbsp;&nbsp;&nbsp;Submit</button>
+  <button type="submit" class="button ion-speakerphone button-block button-clear button-assertive" ng-disabled="review_form.$invalid">&nbsp;&nbsp;&nbsp;Submit</button>
   </form>
             
             
@@ -85,6 +85,6 @@
    
       </ion-slide>
     </ion-slide-box>
-    <p>{{reviewCount}}</p>
+   <!--  <p>{{liked_service}}</p> -->
   </ion-content>   
 </ion-view>

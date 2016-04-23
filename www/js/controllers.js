@@ -96,6 +96,7 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
   
   $scope.receipts = ReviewCards.all();
   $scope.orders = [];
+  $scope.liked_service = true;
   $scope.ratingsObject = {
     iconOn: 'ion-ios-star',    //Optional
     iconOff: 'ion-ios-star-outline',   //Optional
