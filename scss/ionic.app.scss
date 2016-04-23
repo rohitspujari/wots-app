@@ -44,12 +44,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include project Sass variables
 @import "scss/review/review.variables";
+@import "scss/cash/cash.variables";
 @import "scss/auth/auth.variables";
 
 
 // Include custom styles
 @import "scss/auth/auth.styles";
 @import "scss/review/review.styles";
+@import "scss/cash/cash.styles";
 @import "scss/search/search.styles";
 
 

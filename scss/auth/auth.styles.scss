@@ -1,6 +1,6 @@
 @font-face {
   font-family: "storybook";
-  src: url("/fonts/storybook.otf") format("opentype");
+  src: url("../fonts/storybook.otf") format("opentype");
   font-weight: normal;
   font-style: normal; 
 }
@@ -16,15 +16,14 @@
 }
 
 .app-name{
-	margin-top:100px;
+	margin-top:20px;
 	text-align: center;
-	margin-top:0x;
 
 	h3{
 
 	color: $dark;
 	font-family: "storybook";
-	font-size: 50px;
+	font-size: 25px;
 	
 
 	}

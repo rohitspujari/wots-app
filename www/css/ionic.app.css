@@ -9733,7 +9733,7 @@ a.button {
 
 @font-face {
   font-family: "storybook";
-  src: url("/fonts/storybook.otf") format("opentype");
+  src: url("../fonts/storybook.otf") format("opentype");
   font-weight: normal;
   font-style: normal; }
 
@@ -9744,13 +9744,12 @@ a.button {
   -o-background-size: cover; }
 
 .app-name {
-  margin-top: 100px;
-  text-align: center;
-  margin-top: 0x; }
+  margin-top: 20px;
+  text-align: center; }
   .app-name h3 {
     color: #444;
     font-family: "storybook";
-    font-size: 50px; }
+    font-size: 25px; }
 
 .branding {
   width: 100%;
@@ -9787,6 +9786,21 @@ a.button {
 
 body {
   cursor: url("http://ionicframework.com/img/finger.png"), auto; }
+
+/*progress time text on middle of circle*/
+.progress-wrapper {
+  position: relative;
+  margin: 120px auto;
+  font-size: 21px; }
+
+.progress {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 9em;
+  font-size: 1em;
+  text-align: center;
+  font-weight: 300; }
 
 .bar.item-input-inset .item-input-wrapper input {
   width: 100%; }

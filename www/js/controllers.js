@@ -1,4 +1,4 @@
-angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
+angular.module('app.controllers', ['ionic-ratings','app.services','firebase','angular-svg-round-progress'])
 
 
 
@@ -35,7 +35,6 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase'])
       $scope.doLogin = function(){
       $scope.message = null;
       $scope.error = null;
-
       Auth.$authWithPassword ({
         email: $scope.user.email,
         password: $scope.user.password
