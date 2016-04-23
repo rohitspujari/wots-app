@@ -1,4 +1,4 @@
-angular.module('app.controllers', ['ionic-ratings','app.services','firebase','angular-svg-round-progress'])
+angular.module('app.controllers', ['ionic-ratings','app.services','firebase','angular-svg-round-progress','ngCookies'])
 
 
 
@@ -25,12 +25,8 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
 ])
 
 
-
-
-
-
-.controller('LoginCtrl', ['$scope', '$state', 'Auth',
-  function($scope, $state, Auth) {       
+.controller('LoginCtrl', ['$scope', '$state', 'Auth', 'UserFactory',
+  function($scope, $state, Auth, UserFactory) {       
 
       $scope.doLogin = function(){
       $scope.message = null;
@@ -40,6 +36,7 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
         password: $scope.user.password
       }).then(function(userData) {
          $scope.message = "User authenticated with uid: " + userData.uid;
+         UserFactory.setCurrentUser($scope.user.email);
          $state.go('tabs.reviews');
 
       }).catch(function(error) {
@@ -53,7 +50,11 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
 
 
 
+.controller('LoginCtrlx', ['AuthService', function($scope, AuthService) {
 
+  
+
+}])
 
 
   
@@ -66,6 +67,8 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
 })
    
 .controller('searchCtrl', function($scope) {
+
+
 
 })
          
@@ -85,13 +88,15 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
 
 })
 
-.controller('reviewsCtrl',  ['$scope', '$http' , '$ionicSlideBoxDelegate', '$state', 'Reviews', 'ReviewCards',function($scope, $http ,$ionicSlideBoxDelegate, $state,Reviews, ReviewCards) {
+.controller('reviewsCtrl',  ['$scope', '$http' , '$ionicSlideBoxDelegate', '$state', 'Reviews', 'ReviewCards','UserFactory',function($scope, $http ,$ionicSlideBoxDelegate, $state,Reviews, ReviewCards,UserFactory) {
 
   // $http.get('js/data.json').success(function(data){
 
   //   $scope.orderItems = data.artists;
 
   // });
+
+  $scope.username = UserFactory.getCurrentUser();
   
   $scope.receipts = ReviewCards.all();
   $scope.orders = [];
