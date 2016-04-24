@@ -1,12 +1,37 @@
 <ion-view title="Cash" id="page3">
-    <ion-content overflow-scroll="true" padding="true" class="has-header">
+    <ion-content overflow-scroll="false" scroll="false" padding="true" class="has-header">
 
      <div class="progress-wrapper">
-          <div class="progress">
-              {{"$"+10}}
+          <div class="progress">   
+          
+           <p>You earned</p>
+           <h3>{{"$"+10}}</h3>
           </div>
-        <div round-progress max="timeForTimer" current="30" clockwise="false" color="#bf474a" rounded="true" class="text-center"></div><br/><br/><br/>
-        <button type="submit" class="button spacer  button-block button-outline button-balanced" ng-disabled="review_form.$invalid">Redeem</button>
+        <div round-progress max="timeForTimer" current="30" clockwise="false" color="#bf474a" rounded="true" class="text-center"></div><br/>
+
+		<ul class="list">
+   			 <li class="item">
+   			 <p style="text-align: center">Cash Back</p>
+   			 <button class="button button-block button-calm">
+  					Redeem
+			 </button>      
+    		</li>
+    		<li class="item">
+    		 <p style="text-align: center">Donate</p>
+    		 <div class="button-bar">
+  					<a class="button button-block button-energized ">10%</a>
+  					<a class="button button-block button-balanced ">25%</a>
+ 				    <a class="button button-block button-assertive">50%</a>
+			</div>
+   			 <!-- <button class="button button-block button-positive">
+  					Donate
+			 </button>  -->     
+    		</li>
+		</ul>	
+
+        <!-- <button type="submit" class="button spacer  button-block button-outline button-balanced" ng-disabled="review_form.$invalid">Redeem</button>
+        <button type="submit" class="button spacer  button-block button-outline button-balanced" ng-disabled="review_form.$invalid">Donate</button> -->
+
 
       </div>
 
