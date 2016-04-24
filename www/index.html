@@ -39,7 +39,7 @@
     -->
 
   </head>
-  <body ng-app="app" animation="slide-left-right-ios7">
+  <body ng-app="app" ng-controller="sideMenuCtrl" animation="slide-left-right-ios7">
   <div>
     <ion-side-menus enable-menu-with-back-views="false" data-componentid="side-menu21">
         <ion-side-menu-content drag-content="false">
@@ -53,7 +53,7 @@
         </ion-side-menu-content>
         <ion-side-menu side="left" id="side-menu21">
             <ion-header-bar class="bar-dark">            
-                <div class="title"><i class="icon ion-person">&nbsp;&nbsp;&nbsp;{{UserFactory.getCurrentUser()}}</i> 
+                <div class="title"><i class="icon ion-person" ng-model="username">&nbsp;&nbsp;&nbsp;{{menuData.title}}</i> 
                 </div>
             </ion-header-bar>
             <ion-content padding="false" class="side-menu-left has-header">

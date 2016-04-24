@@ -7,8 +7,36 @@ angular.module('app.services', ["firebase"])
   }
 ])
 
-.factory("Reviews", function($firebaseArray) {
-  var reviewsRef = new Firebase("https://wots.firebaseio.com/reviews");
+.factory('UserFactory', [ '$cookies', function($cookies) {
+
+  
+
+  return {
+    setCurrentUID: function(userId) { 
+      $cookies.put("uid", userId);
+    },
+    getCurrentUID: function() { 
+      return $cookies.get("uid");
+      
+    },
+    setCurrentUsername: function(user) { 
+      $cookies.put("username", user);
+    },
+    getCurrentUsername: function() { 
+      return $cookies.get("username");
+      
+    }
+    
+  };
+
+
+}])
+
+.factory("Reviews", function($firebaseArray, UserFactory) {
+
+  var uid = UserFactory.getCurrentUID();
+  var url = "https://wots.firebaseio.com/"+uid+"/reviews"
+  var reviewsRef = new Firebase(url);
   return $firebaseArray(reviewsRef);
 })
 
@@ -60,24 +88,7 @@ angular.module('app.services', ["firebase"])
 // ])
 
 
-.factory('UserFactory', [ '$cookies', function($cookies) {
 
-  var currentUser;
-
-  return {
-    setCurrentUser: function(user) { 
-      currentUser = user; 
-      $cookies.put("username", user);
-    },
-    getCurrentUser: function() { 
-      currentUser = $cookies.get("username");
-      return currentUser; 
-    }
-    
-  };
-
-
-}])
 
 
 

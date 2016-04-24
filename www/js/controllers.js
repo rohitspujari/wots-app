@@ -26,8 +26,10 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
 
 
 .controller('LoginCtrl', ['$scope', '$state', 'Auth', 'UserFactory',
-  function($scope, $state, Auth, UserFactory) {       
+  function($scope, $state, Auth, UserFactory) {  
 
+      UserFactory.setCurrentUID("");
+      UserFactory.setCurrentUsername("");
       $scope.doLogin = function(){
       $scope.message = null;
       $scope.error = null;
@@ -36,7 +38,8 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
         password: $scope.user.password
       }).then(function(userData) {
          $scope.message = "User authenticated with uid: " + userData.uid;
-         UserFactory.setCurrentUser($scope.user.email);
+         UserFactory.setCurrentUID(userData.uid);
+         UserFactory.setCurrentUsername($scope.user.email);
          $state.go('tabs.reviews');
 
       }).catch(function(error) {
@@ -61,7 +64,17 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
 // .controller('reviewsCtrl', function($scope) {
 
 // })
-   
+
+.controller('sideMenuCtrl',['$scope','UserFactory',function($scope,UserFactory) {
+
+  $scope.menuData = {
+    title: ""
+  };
+
+  //$scope.username = UserFactory.getCurrentUsername();
+
+}])
+
 .controller('cashCtrl', function($scope) {
 
 })
@@ -96,7 +109,9 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
 
   // });
 
-  $scope.username = UserFactory.getCurrentUser();
+  $scope.menuData.title = UserFactory.getCurrentUsername();
+
+  //$scope.username = UserFactory.getCurrentUsername();
   
   $scope.receipts = ReviewCards.all();
   $scope.orders = [];
@@ -153,6 +168,8 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
     $scope.liked_server = !$scope.liked_server;
 
   }
+
+
 
   $scope.reviewSlideHasChanged = function(index){
     $scope.orders = [];
