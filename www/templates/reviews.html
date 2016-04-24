@@ -14,7 +14,7 @@
   </ion-nav-title>
 
 <!-- Add Content -->
-  <ion-content scroll="false" ng-app="app">
+  <ion-content scroll="true" ng-app="app">
   <!-- <div><p>{{receipts[1].name}}</p></div> -->
     <ion-slide-box show-pager="true" on-slide-changed="reviewSlideHasChanged($index)" active-slide="currentIndex">
       <ion-slide ng-repeat="receipt in receipts |filter: { active: '1' }" ng-init="updateSlider()">
@@ -33,7 +33,7 @@
 
           
 
-      <ion-scroll direction="y" style="height: 175px">
+      <ion-scroll direction="y">
         <div style="height: 175px"class="item item-body">
           <ion-list>
           
@@ -62,12 +62,17 @@
 
         <!-- <div class="item item-body">    --> 
   <form name="review_form" ng-submit="submitReview(receipt, comments)">
+  
+ 
+
   <label class="item item-input item-floating-label">
     <span class="input-label">Comments</span>
     <input type="text" placeholder="Comments" name="user_comments" ng-model="comments" required>
   </label>
   <button type="submit" class="button  button-block button-clear button-assertive" ng-disabled="review_form.$invalid">Submit</button>
   </form>
+  </div>
+
             
             
 
