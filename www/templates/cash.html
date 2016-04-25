@@ -5,9 +5,20 @@
           <div class="progress">   
           
            <p>You earned</p>
-           <h3>{{"$"+10}}</h3>
+           <h3>{{currentCash}}</h3>
           </div>
-        <div round-progress max="timeForTimer" current="30" clockwise="false" color="#bf474a" rounded="true" class="text-center"></div><br/>
+       <!--  <div round-progress max="maxCash" current="currentCash" clockwise="false" color="url(#gradient)" rounded="true" class="text-center"> -->
+        <div round-progress max="maxCash" current="currentCash" clockwise="false" color="#b3cd52" rounded="true" class="text-center">
+        <svg>
+                    <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="5%"  stop-color="#ffc900"/>
+                        <stop offset="95%" stop-color="#b3cd52"/>
+                    </linearGradient>
+        </svg>
+          
+
+        </div>
+        <br/>
 
 		<ul class="list">
    			 <li class="item">
