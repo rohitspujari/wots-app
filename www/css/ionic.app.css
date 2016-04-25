@@ -9743,6 +9743,9 @@ a.button {
   font-weight: normal;
   font-style: normal; }
 
+.login-view {
+  background-color: #b3cd52 !important; }
+
 .splash {
   background: url("../../../img/splash.jpeg") no-repeat center center fixed;
   -webkit-background-size: cover;

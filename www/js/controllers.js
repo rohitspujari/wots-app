@@ -98,9 +98,34 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
 
 })
    
-.controller('settingsCtrl', function($scope) {
+.controller('settingsCtrl',['$scope', 'Map',function($scope, Map) {
 
-})
+  $scope.place = {};
+    
+    $scope.search = function() {
+        $scope.apiError = false;
+        Map.search($scope.searchPlace)
+        .then(
+            function(res) { // success
+                Map.addMarker(res);
+                $scope.place.name = res.name;
+                $scope.place.lat = res.geometry.location.lat();
+                $scope.place.lng = res.geometry.location.lng();
+            },
+            function(status) { // error
+                $scope.apiError = true;
+                $scope.apiStatus = status;
+            }
+        );
+    }
+    
+    $scope.send = function() {
+        alert($scope.place.name + ' : ' + $scope.place.lat + ', ' + $scope.place.lng);    
+    }
+    
+    Map.init();
+
+}])
    
 .controller('logoutCtrl', function($scope) {
 
@@ -258,36 +283,43 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
 
 
 
-.controller('MapController', ['$scope',function($scope, $ionicLoading) {
+// .controller('MapController', ['$scope',function($scope, $ionicLoading) {
  
-    google.maps.event.addDomListener(window, 'load', function() {
-        var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
+//     google.maps.event.addDomListener(window, 'load', function() {
+//         var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
  
-        var mapOptions = {
-            center: myLatlng,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+//         var mapOptions = {
+//             center: myLatlng,
+//             zoom: 16,
+//             mapTypeId: google.maps.MapTypeId.ROADMAP
+//         };
  
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+//         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
  
-        navigator.geolocation.getCurrentPosition(function(pos) {
-            map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-            var myLocation = new google.maps.Marker({
-                position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-                map: map,
-                title: "My Location"
-            });
-        });
+//         navigator.geolocation.getCurrentPosition(function(pos) {
+//             map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+//             var myLocation = new google.maps.Marker({
+//                 position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+//                 map: map,
+//                 title: "My Location"
+//             });
+//         });
  
-        $scope.map = map;
-    });
+//         $scope.map = map;
+//     });
  
-}])
+// }])
 
 
 
 .controller('MapsCtrl', function($scope, $ionicLoading) {
+
+
+
+  $scope.autocompleteOptions = {
+                        componentRestrictions: { country: 'us' },
+                        types: ['geocode']
+                    }
 
   $scope.info_position = {
     lat: 43.07493,
@@ -305,24 +337,44 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
     $scope.map = map;
   });
 
-  $scope.centerOnMe= function(){
 
-    $scope.positions = [];
-
-    $ionicLoading.show({
-      template: 'Loading...'
-    });
-
-    // with this function you can get the user’s current position
-    // we use this plugin: https://github.com/apache/cordova-plugin-geolocation/
-    navigator.geolocation.getCurrentPosition(function(position) {
+  navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       $scope.current_position = {lat: pos.G,lng: pos.K};
       $scope.my_location = pos.G+", "+pos.K;
       $scope.map.setCenter(pos);
       $ionicLoading.hide();
     });
-  };
+
+
+
+
+  // 
+  
+    
+    //Map.init();
+
+
+
+
+  // $scope.centerOnMe= function(){
+
+  //   $scope.positions = [];
+
+  //   $ionicLoading.show({
+  //     template: 'Loading...'
+  //   });
+
+  //   // with this function you can get the user’s current position
+  //   // we use this plugin: https://github.com/apache/cordova-plugin-geolocation/
+  //   navigator.geolocation.getCurrentPosition(function(position) {
+  //     var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  //     $scope.current_position = {lat: pos.G,lng: pos.K};
+  //     $scope.my_location = pos.G+", "+pos.K;
+  //     $scope.map.setCenter(pos);
+  //     $ionicLoading.hide();
+  //   });
+  // };
 });
 
 
