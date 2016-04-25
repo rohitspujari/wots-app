@@ -77,7 +77,7 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
 
 .controller('cashCtrl', function($scope) {
 
-  $scope.currentCash = 1;
+  $scope.currentCash = 5;
   $scope.maxCash = 10;
   $scope.cashColor = "#633CA6";
 
@@ -255,6 +255,7 @@ angular.module('app.controllers', ['ionic-ratings','app.services','firebase','an
 
   $scope.user = {};
 })
+
 
 
 .controller('MapController', ['$scope',function($scope, $ionicLoading) {

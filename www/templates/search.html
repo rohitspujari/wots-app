@@ -5,18 +5,18 @@
      <label class="item item-input">
  <input type="text" id="Autocomplete" class="form-control" ng-autocomplete ng-model="result1" />
  </label>
-        
+
   </div>
 
-  <div id="map" data-tap-disabled="true"></div> 
+  <div id="map" data-tap-disabled="true"></div>
 
     </ion-content>
 
     <ion-footer-bar class="bar-dark">
       <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate">    Find Me</a>
-    </ion-footer-bar> 
-                   
-      
+    </ion-footer-bar>
+
+
 </ion-view> -->
 
 <ion-view class="maps-view">
@@ -31,15 +31,14 @@
             <div class="item item-input-inset">
               <a class="button button-icon icon ion-pinpoint" ng-click="centerOnMe()"></a>
               <label class="item-input-wrapper">
-                <input type="text" placeholder="My Location" disabled ng-model="my_location">
+              <input type="text" id="Autocomplete" class="form-control" ng-autocomplete ng-model="my_location" />
+                <!-- <input type="text" placeholder="My Location" disabled ng-model="my_location"> -->
               </label>
             </div>
           </div>
         </div>
       </div>
-
-      <google-map center="map.center" zoom="map.zoom" draggable="true" events='map.events' control="map.control"></google-map>
-      <map center="{{center_position.lat}},{{center_position.lng}}" zoom="15">
+      <map center="{{center_position.lat}},{{center_position.lng}}" zoom="10">
         <marker
             position="{{current_position.lat}},{{current_position.lng}}"
             title="Hello Marker"
@@ -47,15 +46,11 @@
         </marker>
         <info-window id="1" position="{{info_position.lat}},{{info_position.lng}}" visible="true">
           <div ng-non-bindable="">
-            <b>The best restaurant</b><br>
-            This is html so you can put whatever <br>
-            you want such as images and <a href="">links</a> <br>
-            <img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=1"></img>
-            <img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=2"></img>
-            <img style=" border-radius: 24px;" src="http://lorempixel.com/50/50/food/?v=3"></img>
+
           </div>
         </info-window>
       </map>
     </div>
   </ion-content>
 </ion-view>
+
