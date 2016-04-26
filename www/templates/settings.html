@@ -13,7 +13,7 @@
     <form name="searchForm" novalidate 
     ng-submit="search()">
         <div class="input-group">
-            <input name="place" type="text" class="form-control" 
+            <input name="place" style="width: 100%" type="text" class="form-control" ng-focus="disableTap()"
             ng-model="searchPlace" ng-autocomplete required autofocus />
             <span class="input-group-btn">
                 <button class="btn btn-primary" 
